@@ -18,12 +18,17 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact={true}>
-          <MusicList musicList={musicList} />
-        </Route>
-        <Route path="/detail/:musicId">
-          <MusicDetail musicList={musicList} />
-        </Route>
+        <Route
+          path="/"
+          exact={true}
+          render={() => (
+            <MusicList musicList={musicList} setMusicList={setMusicList} />
+          )}
+        />
+        <Route
+          path="/detail/:musicId"
+          render={(props) => <MusicDetail musicList={musicList} {...props} />}
+        />
         <Redirect from="*" to="/" />
       </Switch>
     </BrowserRouter>
