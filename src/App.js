@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { getMusicList } from "./api/musics";
+import MusicList from "./pages/musicList";
+import MusicDetail from "./pages/musicDetail";
 
-function App() {
+const App = () => {
+  const [musicList, setMusicList] = useState([]);
+
+  useEffect(() => {
+    const requestMusicList = async () => {
+      const musicData = await getMusicList();
+      setMusicList(musicData.data.feed.entry);
+    };
+    requestMusicList();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact={true}>
+          <MusicList musicList={musicList} />
+        </Route>
+        <Route path="/detail/:musicId">
+          <MusicDetail musicList={musicList} />
+        </Route>
+        <Redirect from="*" to="/" />
+      </Switch>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
