@@ -6,15 +6,15 @@ import MusicDetail from "./pages/musicDetail";
 
 const App = () => {
   const [musicList, setMusicList] = useState([]);
-
   useEffect(() => {
     const requestMusicList = async () => {
       const musicData = await getMusicList();
       setMusicList(musicData.data.feed.entry);
     };
     requestMusicList();
+    return;
   }, []);
-
+  console.log(musicList);
   return (
     <BrowserRouter>
       <Switch>
