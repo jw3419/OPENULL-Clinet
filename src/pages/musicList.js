@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Card from "../components/cards";
 import { sortHandler } from "../middleware/sort";
+import "../style/musicList.css";
 
 const MusicList = ({ musicList, setMusicList }) => {
   const [searchWord, setSearchWord] = useState("");
@@ -20,33 +22,37 @@ const MusicList = ({ musicList, setMusicList }) => {
     setSortValue(e.target.value);
   };
   return (
-    <>
-      <div>Music List - Top 100</div>
-      <div>
-        <span>
-          <select onChange={sortChangeHandler}>
-            <option defaultValue>선택</option>
-            <option value={"오름출시"}>출시일 빠른순</option>
-            <option value={"내림출시"}>출시일 늦은순</option>
-            <option value={"오름이름"}>이름 순</option>
-            <option value={"내림이름"}>이름 반대순</option>
-            <option value={"오름랭킹"}>상위 랭킹순</option>
-            <option value={"내림랭킹"}>하위 랭킹순</option>
-          </select>
-        </span>
-        <span>
-          <input onChange={searchChangeHandler} />
-        </span>
-        <span>
-          <button onClick={searchClickHandler}>검색</button>
-        </span>
+    <div id="container">
+      <Link to={"/"} id="header">
+        <h1>Music List - Top 100</h1>
+      </Link>
+      <div id="bar1">
+        <select onChange={sortChangeHandler}>
+          <option>선택</option>
+          <option value={"오름출시"}>출시일 빠른순</option>
+          <option value={"내림출시"}>출시일 늦은순</option>
+          <option value={"오름이름"}>이름 순</option>
+          <option value={"내림이름"}>이름 반대순</option>
+          <option value={"오름랭킹"}>상위 랭킹순</option>
+          <option value={"내림랭킹"}>하위 랭킹순</option>
+        </select>
       </div>
-      <div>
+      <div id="bar2">
+        <input
+          onChange={searchChangeHandler}
+          placeholder={"검색어를 입력해주세요."}
+        />
+      </div>
+      <div id="bar3">
+        <button onClick={searchClickHandler}>검색</button>
+      </div>
+
+      <div id="main">
         {musicList.map((music) => (
           <Card key={music.id.attributes[`im:id`]} musicData={music} />
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

@@ -14,7 +14,7 @@ const App = () => {
     requestMusicList();
     return;
   }, []);
-  console.log(musicList);
+
   return (
     <BrowserRouter>
       <Switch>
