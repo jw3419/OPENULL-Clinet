@@ -20,4 +20,4 @@ $ npm start
 <br>
 
 ## 4. 회고
-👉 <u>업로드예정</u>
+👉 [회고 바로가기](https://velog.io/@hongin/ReviewFront-end-Test-OPENULL)
