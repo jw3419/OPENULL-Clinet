@@ -15,7 +15,7 @@ $ npm start
 <br>
 
 ## 3. 시연 영상
-👉 <u>업로드예정</u>
+👉 [시연 영상 바로가기](https://drive.google.com/file/d/14YvgDVWQ8LW4Wudbx2PNYSl8nesD5cqJ/view?usp=sharing)
 
 <br>
 
